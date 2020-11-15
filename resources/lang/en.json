@@ -1,0 +1,16 @@
+{
+    "Actions": "Actions",
+    "ButtonBack": "Back to List",
+    "ButtonSave": "Save",
+    "ButtonShow": "Details",
+    "ButtonDelete": "Delete",
+    "ButtonEdit": "Edit",
+    "Required": "The field is required",
+    "SelectAny": "Select any option",
+    "Record Already Exists": "Record Already Exists",
+    "Record Have Relationship Rows": "Record Have Relationship Rows",
+    "ProductsCount": "# Products",
+    "MeasurenmentUnit": "Measurenment Unit",
+    "Description": "Description",
+    "BillNumber": "Bill Number"
+}
