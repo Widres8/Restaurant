@@ -13,7 +13,7 @@ class PurchasesController extends Controller
     public function __construct(PurchaseRepository $repository)
     {
         $this->middleware('auth');
-        $this->repository         = $repository;
+        $this->repository = $repository;
     }
 
     /**
@@ -24,7 +24,7 @@ class PurchasesController extends Controller
     public function index(Request $request)
     {
         $query = $request->querysearch ?? '';
-        $list  = $this->repository->collectionPaginate($this->repository->all([], $query, 'description')['data']);
+        $list = $this->repository->collectionPaginate($this->repository->all([], $query, 'description')['data']);
 
         return view('purchases.index', compact('list', 'query'));
     }
@@ -46,10 +46,10 @@ class PurchasesController extends Controller
      */
     public function store(Request $request)
     {
-        $input      = $request->only('description', 'price', 'comments');
-        $rules      = [
-            'description'           => 'required|max:255|unique:purchases',
-            'price'                 => 'required',
+        $input = $request->only('description', 'price', 'comments');
+        $rules = [
+            'description' => 'required|max:255|unique:purchases',
+            'price' => 'required',
         ];
         $validator = Validator::make($input, $rules);
         if ($validator->fails()) {
@@ -83,17 +83,17 @@ class PurchasesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $itemToEdit           = $this->repository->findOneOrFail($id);
-        $input                = $request->only('description', 'price', 'comments');
-        $rules                = [
-            'description'           => 'required|max:100|unique:purchases,id,{{ id }}',
-            'price'                 => 'required',
+        $itemToEdit = $this->repository->findOneOrFail($id);
+        $input = $request->only('description', 'price', 'comments');
+        $rules = [
+            'description' => 'required|max:100|unique:purchases,id,{{ id }}',
+            'price' => 'required',
         ];
         $validator = Validator::make($input, $rules);
         if ($validator->fails()) {
             return  view('purchases.edit', compact('itemToEdit'))->withErrors($validator->errors()->messages());
         }
-        $result= $this->repository->update($id, $input);
+        $result = $this->repository->update($id, $input);
 
         return $result['success'] ?
             redirect()->route('purchases.index')->with('info', $result['message']) :
@@ -109,8 +109,8 @@ class PurchasesController extends Controller
     public function destroy($id)
     {
         $result = $this->repository->delete($id);
-        $data   = [
-            'status'  => $result['success'],
+        $data = [
+            'status' => $result['success'],
             'Message' => $result['message'],
         ];
 
