@@ -7,7 +7,7 @@
                     {{-- <div class="logo" style="width: 55px; height: 85px;">
                         <img class="" src="{{ asset('images/logo.png') }}" alt="" srcset="">
                     </div> --}}
-                    {{ config('app.name', 'Asha Victoria Enterprises') }}
+                    {{ config('app.name', 'Tengo Hambre') }}
                 </h1>
             </header>
             <div class="auth-content">
